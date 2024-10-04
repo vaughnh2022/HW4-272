@@ -1,5 +1,5 @@
 /*
- * *** YOUR NAME GOES HERE / YOUR SECTION NUMBER ***
+ * *** Vaughn Hartzell 001 ***
  *
  * This HashingProblems object contains three methods / problems that you must
  * complete utilize the HashMap object within the Java's Collection Framework Library.
@@ -40,8 +40,15 @@ class HashingProblems {
          * returning 0.0 is NOT correct, as that is not the average value. Whereas
          * returning 0.0/0.0 IS correct (which would return a non-number).
          */
-
-         return 0.0 / 0.0;
+        double validIntCounter=0;
+        double validIntSum=0;
+        for(int a=0;a<array.length;a++){
+            if(map.containsKey(array[a])){
+                validIntCounter++;
+                validIntSum+=map.get(array[a]);
+            }
+        }
+         return validIntSum / validIntCounter;
   }
 
 
@@ -53,16 +60,12 @@ class HashingProblems {
      */
 
   public ArrayList<String> odd(HashMap<Integer, String> map) {
-    
       ArrayList<String> result = new ArrayList<>();
-
-      /*
-       * ADD YOUR CODE HERE
-       *
-       * Hint: Consider iterating over the HashMap using the keySet method.
-       */
-
-
+      for(int a : map.keySet()){
+        if(a%2==1){
+            result.add(map.get(a));
+        }
+      }
       return result;
   }
 
@@ -105,12 +108,17 @@ class HashingProblems {
    */
 
   public int twoSums(int[] numbers, int k) {
+    HashSet<Integer> set = new HashSet<>();
+    int answer = 0;
+      for(int a=0;a<numbers.length;a++){
+        int x=numbers[a];
+        if(set.contains(k+x)||set.contains(x-k)){
+            answer++;
+        }
+        set.add(x);
+      }
 
-      /*
-       * ADD YOUR CODE HERE
-       */
-
-      return -1;
+      return answer;
   }
 
 } /* end class HashingProblems */
